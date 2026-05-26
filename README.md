@@ -9,6 +9,15 @@ The site combines two kinds of material:
 
 The course map connects each toy mechanism to the real subsystem it prepares you to understand.
 
+## Acknowledgements
+
+This project references and builds on material from two open-source repositories:
+
+- [`shareAI-lab/learn-claude-code`](https://github.com/shareAI-lab/learn-claude-code), which provides the beginner-friendly Claude Code learning lessons and runnable examples.
+- [`openedclaude/claude-reviews-claude`](https://github.com/openedclaude/claude-reviews-claude), which provides the Claude Code architecture review documents used as the advanced reading layer.
+
+Many thanks to the maintainers and contributors of both projects for making these learning resources available.
+
 ## Quick Start
 
 ```bash
