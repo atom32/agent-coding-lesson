@@ -1,0 +1,94 @@
+{
+  "session": "s07",
+  "locale": "en",
+  "slides": [
+    {
+      "id": "s07-01",
+      "type": "title",
+      "session": "s07",
+      "locale": "en",
+      "title": "Tasks",
+      "subtitle": "Task Graph + Dependencies",
+      "motto": "A file-based task graph with ordering, parallelism, and dependencies -- the coordination backbone for multi-agent work",
+      "sessionNumber": 7,
+      "totalSessions": 12
+    },
+    {
+      "id": "s07-02",
+      "type": "problem",
+      "session": "s07",
+      "locale": "en",
+      "title": "The Problem: Tasks",
+      "problem": "s03's TodoManager is a flat checklist in memory: no ordering, no dependencies, no status beyond done-or-not. Real goals have structure -- task B depends on task A, tasks C and D can run in parallel, task E waits for both C and D.\r\n\r\nWithout explicit relationships, the agent can't tell what's ready, what's blocked, or what can run concurrently. And because the list lives only in memory, context compression (s06) wipes it clean.",
+      "context": []
+    },
+    {
+      "id": "s07-03",
+      "type": "solution",
+      "session": "s07",
+      "locale": "en",
+      "title": "The Solution: TaskManager with file-based state + dependency graph",
+      "solution": "Promote the checklist into a **task graph** persisted to disk. Each task is a JSON file with status, dependencies (`blockedBy`). The graph answers three questions at any moment:\r\n\r\n- **What's ready?** -- tasks with `pending` status and empty `blockedBy`.\r\n- **What's blocked?** -- tasks waiting on unfinished dependencies.\r\n- **What's done?** -- `completed` tasks, whose completion automatically unblocks dependents.\r\n\r\n```\r\n.tasks/\r\n  task_1.json  {\"id\":1, \"status\":\"completed\"}\r\n  task_2.json  {\"id\":2, \"blockedBy\":[1], \"status\":\"pending\"}\r\n  task_3.json  {\"id\":3, \"blockedBy\":[1], \"status\":\"pending\"}\r\n  task_4.json  {\"id\":4, \"blockedBy\":[2,3], \"status\":\"pending\"}\r\n\r\nTask graph (DAG):\r\n                 +----------+\r\n            +--> | task 2   | --+\r\n            |    | pending  |   |\r\n+----------+     +----------+    +--> +----------+\r\n| task 1   |                          | task 4   |\r\n| completed| --> +----------+    +--> | blocked  |\r\n+----------+     | task 3   | --+     +----------+\r\n                 | pending  |\r\n                 +----------+\r\n\r\nOrdering:     task 1 must finish before 2 and 3\r\nParallelism:  tasks 2 and 3 can run at the same time\r\nDependencies: task 4 waits for both 2 and 3\r\nStatus:       pending -> in_progress -> completed\r\n```\r\n\r\nThis task graph becomes the coordination backbone for everything after s07: background execution (s08), multi-agent teams (s09+), and worktree isolation (s12) all read from and write to this same structure.",
+      "principles": [
+        "A file-based task graph with ordering, parallelism, and dependencies -- the coordination backbone for multi-agent work",
+        "Key design principle",
+        "Implementation best practice"
+      ]
+    },
+    {
+      "id": "s07-004",
+      "type": "diagram",
+      "session": "s07",
+      "locale": "en",
+      "title": "Execution Flow",
+      "description": "Flow diagram showing Tasks.",
+      "flowId": "s07"
+    },
+    {
+      "id": "s07-005",
+      "type": "demo",
+      "session": "s07",
+      "locale": "en",
+      "title": "See It In Action",
+      "description": "Interactive demo of Tasks.",
+      "simulatorType": "agent-loop",
+      "scenarioId": "s07"
+    },
+    {
+      "id": "s07-006",
+      "type": "summary",
+      "session": "s07",
+      "locale": "en",
+      "title": "Key Takeaways",
+      "takeaways": [
+        "A file-based task graph with ordering, parallelism, and dependencies -- the coordination backbone for multi-agent work",
+        "Core addition: TaskManager with file-based state + dependency graph",
+        "Practical implementation considerations",
+        "Next steps for advanced usage"
+      ]
+    },
+    {
+      "id": "s07-007",
+      "type": "next",
+      "session": "s07",
+      "locale": "en",
+      "title": "Coming Up Next",
+      "nextSessionTitle": "Background Tasks",
+      "nextSessionId": "s08",
+      "preview": [
+        "BackgroundManager + notification queue",
+        "Run slow operations in the background; the agent keeps thinking ahead",
+        "Building on Tasks"
+      ]
+    }
+  ],
+  "metadata": {
+    "title": "Tasks",
+    "subtitle": "Task Graph + Dependencies",
+    "duration": 15,
+    "difficulty": "intermediate",
+    "dependencies": [
+      "s06"
+    ]
+  }
+}

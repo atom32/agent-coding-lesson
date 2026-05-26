@@ -1,0 +1,94 @@
+{
+  "session": "s11",
+  "locale": "en",
+  "slides": [
+    {
+      "id": "s11-01",
+      "type": "title",
+      "session": "s11",
+      "locale": "en",
+      "title": "Autonomous Agents",
+      "subtitle": "Scan Board, Claim Tasks",
+      "motto": "Teammates scan the board and claim tasks themselves; no need for the lead to assign each one",
+      "sessionNumber": 11,
+      "totalSessions": 12
+    },
+    {
+      "id": "s11-02",
+      "type": "problem",
+      "session": "s11",
+      "locale": "en",
+      "title": "The Problem: Autonomous Agents",
+      "problem": "In s09-s10, teammates only work when explicitly told to. The lead must spawn each one with a specific prompt. 10 unclaimed tasks on the board? The lead assigns each one manually. Doesn't scale.\r\n\r\nTrue autonomy: teammates scan the task board themselves, claim unclaimed tasks, work on them, then look for more.\r\n\r\nOne subtlety: after context compression (s06), the agent might forget who it is. Identity re-injection fixes this.",
+      "context": []
+    },
+    {
+      "id": "s11-03",
+      "type": "solution",
+      "session": "s11",
+      "locale": "en",
+      "title": "The Solution: Task board polling + timeout-based self-governance",
+      "solution": "```\r\nTeammate lifecycle with idle cycle:\r\n\r\n+-------+\r\n| spawn |\r\n+---+---+\r\n    |\r\n    v\r\n+-------+   tool_use     +-------+\r\n| WORK  | <------------- |  LLM  |\r\n+---+---+                +-------+\r\n    |\r\n    | stop_reason != tool_use (or idle tool called)\r\n    v\r\n+--------+\r\n|  IDLE  |  poll every 5s for up to 60s\r\n+---+----+\r\n    |\r\n    +---> check inbox --> message? ----------> WORK\r\n    |\r\n    +---> scan .tasks/ --> unclaimed? -------> claim -> WORK\r\n    |\r\n    +---> 60s timeout ----------------------> SHUTDOWN\r\n\r\nIdentity re-injection after compression:\r\n  if len(messages) <= 3:\r\n    messages.insert(0, identity_block)\r\n```",
+      "principles": [
+        "Teammates scan the board and claim tasks themselves; no need for the lead to assign each one",
+        "Key design principle",
+        "Implementation best practice"
+      ]
+    },
+    {
+      "id": "s11-004",
+      "type": "diagram",
+      "session": "s11",
+      "locale": "en",
+      "title": "Execution Flow",
+      "description": "Flow diagram showing Autonomous Agents.",
+      "flowId": "s11"
+    },
+    {
+      "id": "s11-005",
+      "type": "demo",
+      "session": "s11",
+      "locale": "en",
+      "title": "See It In Action",
+      "description": "Interactive demo of Autonomous Agents.",
+      "simulatorType": "agent-loop",
+      "scenarioId": "s11"
+    },
+    {
+      "id": "s11-006",
+      "type": "summary",
+      "session": "s11",
+      "locale": "en",
+      "title": "Key Takeaways",
+      "takeaways": [
+        "Teammates scan the board and claim tasks themselves; no need for the lead to assign each one",
+        "Core addition: Task board polling + timeout-based self-governance",
+        "Practical implementation considerations",
+        "Next steps for advanced usage"
+      ]
+    },
+    {
+      "id": "s11-007",
+      "type": "next",
+      "session": "s11",
+      "locale": "en",
+      "title": "Coming Up Next",
+      "nextSessionTitle": "Worktree + Task Isolation",
+      "nextSessionId": "s12",
+      "preview": [
+        "Composable worktree lifecycle + event stream over a shared task board",
+        "Each works in its own directory; tasks manage goals, worktrees manage directories, bound by ID",
+        "Building on Autonomous Agents"
+      ]
+    }
+  ],
+  "metadata": {
+    "title": "Autonomous Agents",
+    "subtitle": "Scan Board, Claim Tasks",
+    "duration": 15,
+    "difficulty": "advanced",
+    "dependencies": [
+      "s10"
+    ]
+  }
+}

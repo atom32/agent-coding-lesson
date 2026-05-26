@@ -1,0 +1,113 @@
+{
+  "session": "s01",
+  "locale": "en",
+  "slides": [
+    {
+      "id": "s01-01",
+      "type": "title",
+      "session": "s01",
+      "locale": "en",
+      "title": "The Agent Loop",
+      "subtitle": "Bash is All You Need",
+      "motto": "The minimal agent kernel is a while loop + one tool",
+      "sessionNumber": 1,
+      "totalSessions": 12
+    },
+    {
+      "id": "s01-02",
+      "type": "problem",
+      "session": "s01",
+      "locale": "en",
+      "title": "The Problem: The Agent Loop",
+      "problem": "A language model can reason about code, but it can't *touch* the real world -- can't read files, run tests, or check errors. Without a loop, every tool call requires you to manually copy-paste results back. You become the loop.",
+      "context": []
+    },
+    {
+      "id": "s01-03",
+      "type": "solution",
+      "session": "s01",
+      "locale": "en",
+      "title": "The Solution: Single-tool agent loop",
+      "solution": "```\r\n+--------+      +-------+      +---------+\r\n|  User  | ---> |  LLM  | ---> |  Tool   |\r\n| prompt |      |       |      | execute |\r\n+--------+      +---+---+      +----+----+\r\n                    ^                |\r\n                    |   tool_result  |\r\n                    +----------------+\r\n                    (loop until stop_reason != \"tool_use\")\r\n```\r\n\r\nOne exit condition controls the entire flow. The loop runs until the model stops calling tools.",
+      "principles": [
+        "The minimal agent kernel is a while loop + one tool",
+        "Key design principle",
+        "Implementation best practice"
+      ]
+    },
+    {
+      "id": "s01-04",
+      "type": "code",
+      "session": "s01",
+      "locale": "en",
+      "title": "Implementation: agent_loop",
+      "code": {
+        "filename": "s01_agent_loop.py",
+        "language": "python",
+        "startLine": 81,
+        "endLine": 101,
+        "snippet": "def agent_loop(messages: list):\r\n    while True:\r\n        response = client.messages.create(\r\n            model=MODEL, system=SYSTEM, messages=messages,\r\n            tools=TOOLS, max_tokens=8000,\r\n        )\r\n        # Append assistant turn\r\n        messages.append({\"role\": \"assistant\", \"content\": response.content})\r\n        # If the model didn't call a tool, we're done\r\n        if response.stop_reason != \"tool_use\":\r\n            return\r\n        # Execute each tool call, collect results\r\n        results = []\r\n        for block in response.content:\r\n            if block.type == \"tool_use\":\r\n                print(f\"\\033[33m$ {block.input['command']}\\033[0m\")\r\n                output = run_bash(block.input[\"command\"])\r\n                print(output[:200])\r\n                results.append({\"type\": \"tool_result\", \"tool_use_id\": block.id,\r\n                                \"content\": output})\r\n        messages.append({\"role\": \"user\", \"content\": results})\r",
+        "annotations": [
+          {
+            "line": 81,
+            "text": "agent_loop: Single-tool agent loop",
+            "type": "explain"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s01-005",
+      "type": "diagram",
+      "session": "s01",
+      "locale": "en",
+      "title": "Execution Flow",
+      "description": "Flow diagram showing The Agent Loop.",
+      "flowId": "s01"
+    },
+    {
+      "id": "s01-006",
+      "type": "demo",
+      "session": "s01",
+      "locale": "en",
+      "title": "See It In Action",
+      "description": "Interactive demo of The Agent Loop.",
+      "simulatorType": "agent-loop",
+      "scenarioId": "s01"
+    },
+    {
+      "id": "s01-007",
+      "type": "summary",
+      "session": "s01",
+      "locale": "en",
+      "title": "Key Takeaways",
+      "takeaways": [
+        "The minimal agent kernel is a while loop + one tool",
+        "Core addition: Single-tool agent loop",
+        "Practical implementation considerations",
+        "Next steps for advanced usage"
+      ]
+    },
+    {
+      "id": "s01-008",
+      "type": "next",
+      "session": "s01",
+      "locale": "en",
+      "title": "Coming Up Next",
+      "nextSessionTitle": "Tools",
+      "nextSessionId": "s02",
+      "preview": [
+        "Tool dispatch map",
+        "The loop stays the same; new tools register into the dispatch map",
+        "Building on The Agent Loop"
+      ]
+    }
+  ],
+  "metadata": {
+    "title": "The Agent Loop",
+    "subtitle": "Bash is All You Need",
+    "duration": 15,
+    "difficulty": "beginner",
+    "dependencies": []
+  }
+}

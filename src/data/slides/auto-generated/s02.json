@@ -1,0 +1,115 @@
+{
+  "session": "s02",
+  "locale": "en",
+  "slides": [
+    {
+      "id": "s02-01",
+      "type": "title",
+      "session": "s02",
+      "locale": "en",
+      "title": "Tools",
+      "subtitle": "One Handler Per Tool",
+      "motto": "The loop stays the same; new tools register into the dispatch map",
+      "sessionNumber": 2,
+      "totalSessions": 12
+    },
+    {
+      "id": "s02-02",
+      "type": "problem",
+      "session": "s02",
+      "locale": "en",
+      "title": "The Problem: Tools",
+      "problem": "With only `bash`, the agent shells out for everything. `cat` truncates unpredictably, `sed` fails on special characters, and every bash call is an unconstrained security surface. Dedicated tools like `read_file` and `write_file` let you enforce path sandboxing at the tool level.\r\n\r\nThe key insight: adding tools does not require changing the loop.",
+      "context": []
+    },
+    {
+      "id": "s02-03",
+      "type": "solution",
+      "session": "s02",
+      "locale": "en",
+      "title": "The Solution: Tool dispatch map",
+      "solution": "```\r\n+--------+      +-------+      +------------------+\r\n|  User  | ---> |  LLM  | ---> | Tool Dispatch    |\r\n| prompt |      |       |      | {                |\r\n+--------+      +---+---+      |   bash: run_bash |\r\n                    ^           |   read: run_read |\r\n                    |           |   write: run_wr  |\r\n                    +-----------+   edit: run_edit |\r\n                    tool_result | }                |\r\n                                +------------------+\r\n\r\nThe dispatch map is a dict: {tool_name: handler_function}.\r\nOne lookup replaces any if/elif chain.\r\n```",
+      "principles": [
+        "The loop stays the same; new tools register into the dispatch map",
+        "Key design principle",
+        "Implementation best practice"
+      ]
+    },
+    {
+      "id": "s02-04",
+      "type": "code",
+      "session": "s02",
+      "locale": "en",
+      "title": "Implementation: agent_loop",
+      "code": {
+        "filename": "s02_tool_use.py",
+        "language": "python",
+        "startLine": 114,
+        "endLine": 133,
+        "snippet": "def agent_loop(messages: list):\r\n    while True:\r\n        response = client.messages.create(\r\n            model=MODEL, system=SYSTEM, messages=messages,\r\n            tools=TOOLS, max_tokens=8000,\r\n        )\r\n        messages.append({\"role\": \"assistant\", \"content\": response.content})\r\n        if response.stop_reason != \"tool_use\":\r\n            return\r\n        results = []\r\n        for block in response.content:\r\n            if block.type == \"tool_use\":\r\n                handler = TOOL_HANDLERS.get(block.name)\r\n                output = handler(**block.input) if handler else f\"Unknown tool: {block.name}\"\r\n                print(f\"> {block.name}:\")\r\n                print(output[:200])\r\n                results.append({\"type\": \"tool_result\", \"tool_use_id\": block.id, \"content\": output})\r\n        messages.append({\"role\": \"user\", \"content\": results})\r\n\r\n\r",
+        "annotations": [
+          {
+            "line": 114,
+            "text": "agent_loop: Tool dispatch map",
+            "type": "explain"
+          }
+        ]
+      }
+    },
+    {
+      "id": "s02-005",
+      "type": "diagram",
+      "session": "s02",
+      "locale": "en",
+      "title": "Execution Flow",
+      "description": "Flow diagram showing Tools.",
+      "flowId": "s02"
+    },
+    {
+      "id": "s02-006",
+      "type": "demo",
+      "session": "s02",
+      "locale": "en",
+      "title": "See It In Action",
+      "description": "Interactive demo of Tools.",
+      "simulatorType": "agent-loop",
+      "scenarioId": "s02"
+    },
+    {
+      "id": "s02-007",
+      "type": "summary",
+      "session": "s02",
+      "locale": "en",
+      "title": "Key Takeaways",
+      "takeaways": [
+        "The loop stays the same; new tools register into the dispatch map",
+        "Core addition: Tool dispatch map",
+        "Practical implementation considerations",
+        "Next steps for advanced usage"
+      ]
+    },
+    {
+      "id": "s02-008",
+      "type": "next",
+      "session": "s02",
+      "locale": "en",
+      "title": "Coming Up Next",
+      "nextSessionTitle": "TodoWrite",
+      "nextSessionId": "s03",
+      "preview": [
+        "TodoManager + nag reminder",
+        "An agent without a plan drifts; list the steps first, then execute",
+        "Building on Tools"
+      ]
+    }
+  ],
+  "metadata": {
+    "title": "Tools",
+    "subtitle": "One Handler Per Tool",
+    "duration": 15,
+    "difficulty": "beginner",
+    "dependencies": [
+      "s01"
+    ]
+  }
+}

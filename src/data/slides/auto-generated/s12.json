@@ -1,0 +1,80 @@
+{
+  "session": "s12",
+  "locale": "en",
+  "slides": [
+    {
+      "id": "s12-01",
+      "type": "title",
+      "session": "s12",
+      "locale": "en",
+      "title": "Worktree + Task Isolation",
+      "subtitle": "Isolate by Directory",
+      "motto": "Each works in its own directory; tasks manage goals, worktrees manage directories, bound by ID",
+      "sessionNumber": 12,
+      "totalSessions": 12
+    },
+    {
+      "id": "s12-02",
+      "type": "problem",
+      "session": "s12",
+      "locale": "en",
+      "title": "The Problem: Worktree + Task Isolation",
+      "problem": "By s11, agents can claim and complete tasks autonomously. But every task runs in one shared directory. Two agents refactoring different modules at the same time will collide: agent A edits `config.py`, agent B edits `config.py`, unstaged changes mix, and neither can roll back cleanly.\r\n\r\nThe task board tracks *what to do* but has no opinion about *where to do it*. The fix: give each task its own git worktree directory. Tasks manage goals, worktrees manage execution context. Bind them by task ID.",
+      "context": []
+    },
+    {
+      "id": "s12-03",
+      "type": "solution",
+      "session": "s12",
+      "locale": "en",
+      "title": "The Solution: Composable worktree lifecycle + event stream over a shared task board",
+      "solution": "```\r\nControl plane (.tasks/)             Execution plane (.worktrees/)\r\n+------------------+                +------------------------+\r\n| task_1.json      |                | auth-refactor/         |\r\n|   status: in_progress  <------>   branch: wt/auth-refactor\r\n|   worktree: \"auth-refactor\"   |   task_id: 1             |\r\n+------------------+                +------------------------+\r\n| task_2.json      |                | ui-login/              |\r\n|   status: pending    <------>     branch: wt/ui-login\r\n|   worktree: \"ui-login\"       |   task_id: 2             |\r\n+------------------+                +------------------------+\r\n                                    |\r\n                          index.json (worktree registry)\r\n                          events.jsonl (lifecycle log)\r\n\r\nState machines:\r\n  Task:     pending -> in_progress -> completed\r\n  Worktree: absent  -> active      -> removed | kept\r\n```",
+      "principles": [
+        "Each works in its own directory; tasks manage goals, worktrees manage directories, bound by ID",
+        "Key design principle",
+        "Implementation best practice"
+      ]
+    },
+    {
+      "id": "s12-004",
+      "type": "diagram",
+      "session": "s12",
+      "locale": "en",
+      "title": "Execution Flow",
+      "description": "Flow diagram showing Worktree + Task Isolation.",
+      "flowId": "s12"
+    },
+    {
+      "id": "s12-005",
+      "type": "demo",
+      "session": "s12",
+      "locale": "en",
+      "title": "See It In Action",
+      "description": "Interactive demo of Worktree + Task Isolation.",
+      "simulatorType": "agent-loop",
+      "scenarioId": "s12"
+    },
+    {
+      "id": "s12-006",
+      "type": "summary",
+      "session": "s12",
+      "locale": "en",
+      "title": "Key Takeaways",
+      "takeaways": [
+        "Each works in its own directory; tasks manage goals, worktrees manage directories, bound by ID",
+        "Core addition: Composable worktree lifecycle + event stream over a shared task board",
+        "Practical implementation considerations",
+        "Next steps for advanced usage"
+      ]
+    }
+  ],
+  "metadata": {
+    "title": "Worktree + Task Isolation",
+    "subtitle": "Isolate by Directory",
+    "duration": 15,
+    "difficulty": "advanced",
+    "dependencies": [
+      "s11"
+    ]
+  }
+}
