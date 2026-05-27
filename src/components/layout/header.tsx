@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { key: "curriculum", href: "/curriculum" },
+  { key: "advanced", href: "/advanced/00-overview" },
   { key: "timeline", href: "/timeline" },
   { key: "compare", href: "/compare" },
   { key: "layers", href: "/layers" },
@@ -20,6 +21,8 @@ const LOCALES = [
   { code: "zh", label: "中文" },
   { code: "ja", label: "日本語" },
 ];
+
+const PROJECT_REPO_URL = "https://github.com/atom32/agent-coding-lesson";
 
 export function Header() {
   const t = useTranslations("nav");
@@ -50,24 +53,32 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href={`/${locale}`} className="text-lg font-bold">
-          Learn Claude Code
+          Agent Coding Lesson
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.key}
-              href={`/${locale}${item.href}`}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white",
-                pathname.includes(item.href)
-                  ? "text-zinc-900 dark:text-white"
-                  : "text-zinc-500 dark:text-zinc-400"
-              )}
-            >
-              {t(item.key)}
-            </Link>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const href = `/${locale}${item.href}`;
+            const isActive =
+              item.key === "advanced"
+                ? pathname.startsWith(`/${locale}/advanced`)
+                : pathname.includes(item.href);
+
+            return (
+              <Link
+                key={item.key}
+                href={href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white",
+                  isActive
+                    ? "text-zinc-900 dark:text-white"
+                    : "text-zinc-500 dark:text-zinc-400"
+                )}
+              >
+                {t(item.key)}
+              </Link>
+            );
+          })}
 
           <div className="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5">
             {LOCALES.map((l) => (
@@ -103,10 +114,11 @@ export function Header() {
           </button>
 
           <a
-            href="https://github.com/shareAI-lab/learn-claude-code"
+            href={PROJECT_REPO_URL}
             target="_blank"
             rel="noopener"
             className="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white"
+            aria-label="Open project repository on GitHub"
           >
             <Github size={18} />
           </a>
@@ -167,10 +179,11 @@ export function Header() {
                 )}
               </button>
               <a
-                href="https://github.com/shareAI-lab/learn-claude-code"
+                href={PROJECT_REPO_URL}
                 target="_blank"
                 rel="noopener"
                 className="flex min-h-[44px] min-w-[44px] items-center justify-center text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white"
+                aria-label="Open project repository on GitHub"
               >
                 <Github size={18} />
               </a>

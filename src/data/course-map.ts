@@ -312,6 +312,10 @@ export const COURSE_BRIDGES: CourseBridge[] = [
   },
 ];
 
+export const ADVANCED_CHAPTER_LIST: AdvancedChapter[] = Object.values(
+  ADVANCED_CHAPTERS
+).sort((a, b) => a.id.localeCompare(b.id));
+
 export const COURSE_BRIDGE_ZH: Record<string, LocalizedCourseBridgeText> = {
   s01: {
     labQuestion: "一个模型如何靠一个循环和一个工具变成 Agent？",

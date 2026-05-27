@@ -2,13 +2,13 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { AdvancedDocRenderer } from "@/components/docs/advanced-doc-renderer";
 import {
-  ADVANCED_CHAPTERS,
+  ADVANCED_CHAPTER_LIST,
   localizeChapter,
   type AdvancedChapterId,
 } from "@/data/course-map";
 import { getTranslations } from "@/lib/i18n-server";
 
-const CHAPTERS = Object.values(ADVANCED_CHAPTERS);
+const CHAPTERS = ADVANCED_CHAPTER_LIST;
 
 export function generateStaticParams() {
   return CHAPTERS.map((chapter) => ({ chapter: chapter.path }));

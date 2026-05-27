@@ -1,8 +1,9 @@
 {
-  "meta": { "title": "Learn Claude Code", "description": "从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制" },
-  "nav": { "home": "首页", "curriculum": "课程地图", "timeline": "学习路径", "compare": "版本对比", "layers": "架构层", "slides": "幻灯片", "github": "GitHub" },
+  "meta": { "title": "Agent Coding Lesson", "description": "从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制" },
+  "nav": { "home": "首页", "curriculum": "课程地图", "advanced": "高级章节", "timeline": "学习路径", "compare": "版本对比", "layers": "架构层", "slides": "幻灯片", "github": "GitHub" },
+  "sidebar": { "lab_track": "实验室课程", "production_track": "真实系统解剖" },
   "home": {
-    "hero_title": "Learn Claude Code",
+    "hero_title": "Agent Coding Lesson",
     "hero_subtitle": "从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制",
     "start": "开始学习",
     "core_pattern": "核心模式",
@@ -77,6 +78,8 @@
     "production_question": "生产系统问题",
     "bridge_reading": "桥接阅读",
     "advanced_chapters": "中级/高级章节",
+    "advanced_index_title": "高级章节索引",
+    "advanced_index_desc": "直接浏览真实系统解剖层，不必先从某一节实验课进入。",
     "practice_upgrade": "实践升级",
     "transfer_pattern": "可迁移模式",
     "not_found": "未找到高级章节"

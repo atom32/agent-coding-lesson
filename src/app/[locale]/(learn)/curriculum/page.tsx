@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, BookOpen, FlaskConical } from "lucide-react";
 import { useLocale, useTranslations } from "@/lib/i18n";
 import { getVersionMeta } from "@/lib/constants";
 import {
+  ADVANCED_CHAPTER_LIST,
   ADVANCED_CHAPTERS,
   COURSE_BRIDGES,
   getAdvancedChapterUrl,
@@ -125,6 +126,47 @@ export default function CurriculumPage() {
             </div>
           );
         })}
+      </section>
+
+      <section className="space-y-4">
+        <div className="max-w-3xl">
+          <h2 className="text-xl font-semibold text-zinc-950 dark:text-zinc-50">
+            {t("advanced_index_title")}
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+            {t("advanced_index_desc")}
+          </p>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {ADVANCED_CHAPTER_LIST.map((rawChapter) => {
+            const chapter = localizeChapter(rawChapter, locale);
+            return (
+              <Link
+                key={chapter.id}
+                href={getAdvancedChapterUrl(locale, chapter)}
+                className="group rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:bg-zinc-800/60"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <div className="font-mono text-xs font-medium text-zinc-400">
+                      EP{chapter.id}
+                    </div>
+                    <h3 className="mt-1 text-sm font-semibold text-zinc-950 dark:text-zinc-50">
+                      {chapter.title}
+                    </h3>
+                  </div>
+                  <ArrowUpRight
+                    size={15}
+                    className="mt-0.5 shrink-0 text-zinc-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </div>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  {chapter.focus}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
       </section>
     </div>
   );
