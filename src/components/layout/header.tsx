@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { key: "curriculum", href: "/curriculum" },
-  { key: "advanced", href: "/advanced/00-overview" },
   { key: "timeline", href: "/timeline" },
   { key: "compare", href: "/compare" },
   { key: "layers", href: "/layers" },
@@ -59,10 +58,7 @@ export function Header() {
         <nav className="hidden items-center gap-6 md:flex">
           {NAV_ITEMS.map((item) => {
             const href = `/${locale}${item.href}`;
-            const isActive =
-              item.key === "advanced"
-                ? pathname.startsWith(`/${locale}/advanced`)
-                : pathname.includes(item.href);
+            const isActive = pathname.includes(item.href);
 
             return (
               <Link

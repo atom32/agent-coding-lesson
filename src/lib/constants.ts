@@ -38,61 +38,73 @@ export const LAYERS = [
 
 export const VERSION_META_ZH: Record<string, Partial<(typeof VERSION_META)[string]>> = {
   s01: {
+    title: "Agent 循环",
     subtitle: "Bash 就够了",
     coreAddition: "单工具 Agent 循环",
     keyInsight: "最小 Agent 内核就是一个 while 循环加一个工具",
   },
   s02: {
+    title: "工具使用",
     subtitle: "每个工具一个 Handler",
     coreAddition: "工具分发表",
     keyInsight: "循环保持不变，新工具只需要注册进 dispatch map",
   },
   s03: {
+    title: "TodoWrite",
     subtitle: "先计划，再行动",
     coreAddition: "TodoManager + 提醒机制",
     keyInsight: "没有计划的 Agent 会漂移；先列步骤，再执行",
   },
   s04: {
+    title: "子 Agent",
     subtitle: "每个子任务都有干净上下文",
     coreAddition: "带独立 messages[] 的子 Agent",
     keyInsight: "子 Agent 使用独立 messages[]，避免污染主对话",
   },
   s05: {
+    title: "技能加载",
     subtitle: "按需加载知识",
     coreAddition: "SkillLoader + 两层注入",
     keyInsight: "需要时通过 tool_result 注入知识，而不是提前塞进 system prompt",
   },
   s06: {
+    title: "上下文压缩",
     subtitle: "三层上下文压缩",
     coreAddition: "微压缩 + 自动压缩 + 归档",
     keyInsight: "上下文总会满；分层压缩让会话可以持续工作",
   },
   s07: {
+    title: "任务系统",
     subtitle: "任务图 + 依赖",
     coreAddition: "文件状态任务管理器 + 依赖图",
     keyInsight: "文件化任务图是多 Agent 协作的协调骨架",
   },
   s08: {
+    title: "后台任务",
     subtitle: "后台线程 + 通知",
     coreAddition: "BackgroundManager + 通知队列",
     keyInsight: "慢操作放到后台，Agent 可以继续思考下一步",
   },
   s09: {
+    title: "Agent 团队",
     subtitle: "队友 + 邮箱",
     coreAddition: "TeammateManager + 文件邮箱",
     keyInsight: "一个 Agent 不够时，把任务委派给通过异步邮箱协作的持久队友",
   },
   s10: {
+    title: "团队协议",
     subtitle: "统一通信规则",
     coreAddition: "带 request_id 关联的两种协议",
     keyInsight: "同一种 request-response 形状可以驱动所有团队协商",
   },
   s11: {
+    title: "自主 Agent",
     subtitle: "扫描任务板，自主认领",
     coreAddition: "任务板轮询 + 基于超时的自治",
     keyInsight: "队友自己扫描任务并认领，不需要领导逐个分配",
   },
   s12: {
+    title: "Worktree 任务隔离",
     subtitle: "按目录隔离执行",
     coreAddition: "任务板上的 worktree 生命周期与事件流",
     keyInsight: "每个任务在自己的目录里工作；任务管理目标，worktree 管理执行环境",

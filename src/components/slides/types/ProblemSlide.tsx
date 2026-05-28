@@ -10,6 +10,13 @@ interface ProblemSlideProps {
 }
 
 export function ProblemSlide({ slide }: ProblemSlideProps) {
+  const contextLabel =
+    slide.locale === "zh"
+      ? "背景"
+      : slide.locale === "ja"
+        ? "背景"
+        : "Context";
+
   return (
     <motion.div
       variants={staggerContainer}
@@ -43,7 +50,7 @@ export function ProblemSlide({ slide }: ProblemSlideProps) {
       {slide.context && slide.context.length > 0 && (
         <motion.div variants={staggerItem}>
           <h3 className="text-lg font-semibold text-zinc-700 dark:text-zinc-400 mb-4">
-            Context
+            {contextLabel}
           </h3>
           <ul className="space-y-3">
             {slide.context.map((item, index) => (

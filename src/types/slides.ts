@@ -17,6 +17,7 @@ export interface BaseSlide {
   type: SlideType;
   session: string; // s01, s02, etc.
   locale: "en" | "zh" | "ja";
+  speakerNotes?: string[];
 }
 
 export interface TitleSlide extends BaseSlide {

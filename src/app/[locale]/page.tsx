@@ -14,7 +14,16 @@ import {
   localizeBridge,
   localizeChapter,
 } from "@/data/course-map";
-import { ArrowRight, BookOpen, FlaskConical, Map } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  BrainCircuit,
+  FlaskConical,
+  Hammer,
+  Map,
+  Repeat2,
+  Wrench,
+} from "lucide-react";
 
 const LAYER_DOT_COLORS: Record<string, string> = {
   tools: "bg-blue-500",
@@ -49,6 +58,34 @@ export default function HomePage() {
   const tSession = useTranslations("sessions");
   const tLayer = useTranslations("layer_labels");
   const locale = useLocale();
+  const foundationCards = [
+    {
+      icon: BrainCircuit,
+      title: t("course_focus_title"),
+      desc: t("course_focus_desc"),
+    },
+    {
+      icon: Hammer,
+      title: t("harness_title"),
+      desc: t("harness_desc"),
+    },
+    {
+      icon: Repeat2,
+      title: t("agentic_loop_title"),
+      desc: t("agentic_loop_desc"),
+    },
+    {
+      icon: Wrench,
+      title: t("tool_calling_title"),
+      desc: t("tool_calling_desc"),
+    },
+  ];
+  const outcomes = [
+    t("outcome_loop"),
+    t("outcome_tools"),
+    t("outcome_state"),
+    t("outcome_production"),
+  ];
 
   return (
     <div className="flex flex-col gap-20 pb-16">
@@ -68,6 +105,61 @@ export default function HomePage() {
             {t("start")}
             <span aria-hidden="true">&rarr;</span>
           </Link>
+        </div>
+      </section>
+
+      {/* Course Foundations */}
+      <section>
+        <div className="mb-6 max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+            {t("foundations_label")}
+          </p>
+          <h2 className="mt-2 text-2xl font-bold sm:text-3xl">
+            {t("foundations_title")}
+          </h2>
+          <p className="mt-3 text-base leading-7 text-[var(--color-text-secondary)]">
+            {t("foundations_desc")}
+          </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          {foundationCards.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.title}
+                className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-5"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300">
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="text-base font-semibold">{item.title}</h3>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                  {item.desc}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-5 rounded-lg border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900/60">
+          <h3 className="text-sm font-semibold text-zinc-950 dark:text-zinc-50">
+            {t("outcomes_title")}
+          </h3>
+          <div className="mt-4 grid gap-3 md:grid-cols-4">
+            {outcomes.map((outcome, index) => (
+              <div key={outcome} className="flex items-start gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-900 text-xs font-semibold text-white dark:bg-white dark:text-zinc-900">
+                  {index + 1}
+                </span>
+                <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  {outcome}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

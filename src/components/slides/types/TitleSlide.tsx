@@ -9,6 +9,13 @@ interface TitleSlideProps {
 }
 
 export function TitleSlide({ slide }: TitleSlideProps) {
+  const sessionLabel =
+    slide.locale === "zh"
+      ? `第 ${slide.sessionNumber} / ${slide.totalSessions} 节`
+      : slide.locale === "ja"
+        ? `セッション ${slide.sessionNumber} / ${slide.totalSessions}`
+        : `Session ${slide.sessionNumber} of ${slide.totalSessions}`;
+
   return (
     <motion.div
       variants={staggerContainer}
@@ -51,7 +58,7 @@ export function TitleSlide({ slide }: TitleSlideProps) {
         variants={staggerItem}
         className="mt-12 text-sm text-zinc-500 dark:text-zinc-600"
       >
-        Session {slide.sessionNumber} of {slide.totalSessions}
+        {sessionLabel}
       </motion.div>
     </motion.div>
   );

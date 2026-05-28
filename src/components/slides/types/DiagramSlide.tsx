@@ -13,6 +13,27 @@ interface DiagramSlideProps {
 
 export function DiagramSlide({ slide }: DiagramSlideProps) {
   const flow = getFlowForVersion(slide.flowId);
+  const labels =
+    slide.locale === "zh"
+      ? {
+          startEnd: "开始/结束",
+          process: "处理",
+          decision: "判断",
+          subprocess: "子流程",
+        }
+      : slide.locale === "ja"
+        ? {
+            startEnd: "開始/終了",
+            process: "処理",
+            decision: "判断",
+            subprocess: "サブプロセス",
+          }
+        : {
+            startEnd: "Start/End",
+            process: "Process",
+            decision: "Decision",
+            subprocess: "Subprocess",
+          };
 
   if (!flow) {
     return (
@@ -82,19 +103,19 @@ export function DiagramSlide({ slide }: DiagramSlideProps) {
       >
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded bg-green-500"></div>
-          <span className="text-zinc-600 dark:text-zinc-400">Start/End</span>
+          <span className="text-zinc-600 dark:text-zinc-400">{labels.startEnd}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded bg-blue-500"></div>
-          <span className="text-zinc-600 dark:text-zinc-400">Process</span>
+          <span className="text-zinc-600 dark:text-zinc-400">{labels.process}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded bg-amber-500"></div>
-          <span className="text-zinc-600 dark:text-zinc-400">Decision</span>
+          <span className="text-zinc-600 dark:text-zinc-400">{labels.decision}</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-4 h-4 rounded bg-purple-500"></div>
-          <span className="text-zinc-600 dark:text-zinc-400">Subprocess</span>
+          <span className="text-zinc-600 dark:text-zinc-400">{labels.subprocess}</span>
         </div>
       </motion.div>
     </motion.div>

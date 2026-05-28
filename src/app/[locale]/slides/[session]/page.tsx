@@ -1,24 +1,13 @@
 import { notFound } from "next/navigation";
 import { SlideDeck } from "@/components/slides/SlideDeck";
-import { VERSION_META, VERSION_ORDER } from "@/lib/constants";
-import type { SlideDeck as SlideDeckData } from "@/types/slides";
+import { VERSION_ORDER, getVersionMeta } from "@/lib/constants";
+import { buildSlideDeck } from "@/data/slides/build-deck";
 
 interface SlidesPageProps {
   params: Promise<{
     locale: string;
     session: string;
   }>;
-}
-
-async function getSlideData(session: string, locale: string): Promise<SlideDeckData | null> {
-  try {
-    const data = await import(
-      `@/data/slides/auto-generated/${session}.json`
-    );
-    return data.default as SlideDeckData;
-  } catch {
-    return null;
-  }
 }
 
 export async function generateStaticParams() {
@@ -42,7 +31,7 @@ export default async function SlidesPage({
     notFound();
   }
 
-  const deckData = await getSlideData(session, locale);
+  const deckData = buildSlideDeck(session, locale);
 
   if (!deckData) {
     notFound();
@@ -53,10 +42,11 @@ export default async function SlidesPage({
 
 export async function generateMetadata({ params }: SlidesPageProps) {
   const { session, locale } = await params;
-  const meta = VERSION_META[session];
+  const meta = getVersionMeta(session, locale);
+  const deckData = buildSlideDeck(session, locale);
 
   return {
-    title: `${meta.title} - Slides`,
+    title: `${deckData?.metadata.title ?? meta.title} - Slides`,
     description: meta.subtitle,
   };
 }

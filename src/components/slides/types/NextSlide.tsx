@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { staggerContainer, staggerItem } from "@/lib/slide-animations";
 import type { NextSlide as NextSlideType } from "@/types/slides";
-import { VERSION_META } from "@/lib/constants";
+import { getVersionMeta } from "@/lib/constants";
 import { useRouter } from "next/navigation";
 
 interface NextSlideProps {
@@ -13,7 +13,31 @@ interface NextSlideProps {
 
 export function NextSlide({ slide }: NextSlideProps) {
   const router = useRouter();
-  const nextVersionMeta = VERSION_META[slide.nextSessionId];
+  const nextVersionMeta = getVersionMeta(slide.nextSessionId, slide.locale);
+  const labels =
+    slide.locale === "zh"
+      ? {
+          nextSession: "下一节",
+          comingUp: "将会看到",
+          continueTo: "继续到",
+          pressHint: "也可以按",
+          pressAction: "继续",
+        }
+      : slide.locale === "ja"
+        ? {
+            nextSession: "次のセッション",
+            comingUp: "次に学ぶこと",
+            continueTo: "続ける",
+            pressHint: "または",
+            pressAction: "で続行",
+          }
+        : {
+            nextSession: "Next Session",
+            comingUp: "Coming Up",
+            continueTo: "Continue to",
+            pressHint: "or press",
+            pressAction: "to continue",
+          };
 
   const goToNextSession = () => {
     // Get current locale from URL
@@ -51,7 +75,7 @@ export function NextSlide({ slide }: NextSlideProps) {
           <ArrowRight className="w-8 h-8 text-purple-600 dark:text-purple-400" />
           <div className="text-left">
             <p className="text-sm text-purple-600 dark:text-purple-400 font-medium mb-1">
-              Next Session
+              {labels.nextSession}
             </p>
             <p className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
               {slide.nextSessionTitle}
@@ -68,7 +92,7 @@ export function NextSlide({ slide }: NextSlideProps) {
       {slide.preview.length > 0 && (
         <motion.div variants={staggerItem}>
           <h3 className="text-lg font-semibold text-zinc-700 dark:text-zinc-400 mb-6">
-            Coming Up
+            {labels.comingUp}
           </h3>
           <div className="grid sm:grid-cols-3 gap-4">
             {slide.preview.map((item, index) => (
@@ -99,11 +123,11 @@ export function NextSlide({ slide }: NextSlideProps) {
           onClick={goToNextSession}
           className="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors inline-flex items-center gap-2"
         >
-          Continue to {slide.nextSessionTitle}
+          {labels.continueTo} {slide.nextSessionTitle}
           <ArrowRight className="w-4 h-4" />
         </button>
         <p className="text-zinc-500 dark:text-zinc-500 mt-4">
-          or press <kbd className="px-2 py-1 bg-zinc-200 dark:bg-zinc-800 rounded text-xs">→</kbd> to continue
+          {labels.pressHint} <kbd className="px-2 py-1 bg-zinc-200 dark:bg-zinc-800 rounded text-xs">→</kbd> {labels.pressAction}
         </p>
       </motion.div>
     </motion.div>

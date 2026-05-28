@@ -10,6 +10,13 @@ interface SummarySlideProps {
 }
 
 export function SummarySlide({ slide }: SummarySlideProps) {
+  const upNextLabel =
+    slide.locale === "zh"
+      ? "下一节"
+      : slide.locale === "ja"
+        ? "次へ"
+        : "Up Next";
+
   return (
     <motion.div
       variants={staggerContainer}
@@ -60,7 +67,7 @@ export function SummarySlide({ slide }: SummarySlideProps) {
           <ArrowRight className="w-6 h-6 text-blue-600 dark:text-blue-400 flex-shrink-0" />
           <div>
             <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-1">
-              Up Next
+              {upNextLabel}
             </p>
             <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
               {slide.nextSession}

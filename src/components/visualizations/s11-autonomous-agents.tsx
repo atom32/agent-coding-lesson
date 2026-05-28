@@ -55,8 +55,8 @@ const INITIAL_TASKS: TaskRow[] = [
 
 // Agent positions around the task board (left panel)
 const BOARD_CX = 140;
-const BOARD_CY = 90;
-const AGENT_ORBIT = 85;
+const BOARD_CY = 110;
+const AGENT_ORBIT = 80;
 const AGENT_R = 20;
 
 const AGENT_ANGLES = [-Math.PI / 2, Math.PI / 6, (5 * Math.PI) / 6];
@@ -298,6 +298,7 @@ export default function AutonomousAgents({ title }: { title?: string }) {
                       fill={state.color}
                       stroke={state.phase === "work" ? "#059669" : palette.nodeStroke}
                       strokeWidth={1.5}
+                      style={{ transformBox: "fill-box", transformOrigin: "center" }}
                       animate={{
                         scale: isPulsing ? [1, 1.1, 1] : 1,
                         fill: state.color,
@@ -412,6 +413,7 @@ export default function AutonomousAgents({ title }: { title?: string }) {
                       fill={isActive ? PHASE_COLORS[state.id] : palette.nodeFill}
                       stroke={isActive ? PHASE_COLORS[state.id] : palette.nodeStroke}
                       strokeWidth={isActive ? 2 : 1}
+                      style={{ transformBox: "fill-box", transformOrigin: "center" }}
                       animate={{
                         fill: isActive ? PHASE_COLORS[state.id] : palette.nodeFill,
                         scale: isActive ? 1.1 : 1,

@@ -10,6 +10,13 @@ interface SolutionSlideProps {
 }
 
 export function SolutionSlide({ slide }: SolutionSlideProps) {
+  const principlesLabel =
+    slide.locale === "zh"
+      ? "关键原则"
+      : slide.locale === "ja"
+        ? "重要原則"
+        : "Key Principles";
+
   return (
     <motion.div
       variants={staggerContainer}
@@ -43,7 +50,7 @@ export function SolutionSlide({ slide }: SolutionSlideProps) {
       {slide.principles && slide.principles.length > 0 && (
         <motion.div variants={staggerItem}>
           <h3 className="text-lg font-semibold text-zinc-700 dark:text-zinc-400 mb-4">
-            Key Principles
+            {principlesLabel}
           </h3>
           <div className="grid gap-4 sm:grid-cols-2">
             {slide.principles.map((principle, index) => (

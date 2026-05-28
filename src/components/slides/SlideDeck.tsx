@@ -25,6 +25,7 @@ interface SlideDeckProps {
 export function SlideDeck({ deckData }: SlideDeckProps) {
   const [direction, setDirection] = useState(0);
   const [showControls, setShowControls] = useState(true);
+  const [showNotes, setShowNotes] = useState(false);
   const router = useRouter();
 
   const {
@@ -45,6 +46,20 @@ export function SlideDeck({ deckData }: SlideDeckProps) {
 
   const currentSlide = deckData.slides[currentIndex];
   const isNextSlide = currentSlide?.type === "next";
+  const speakerNotes = currentSlide?.speakerNotes ?? [];
+  const hasNotes = speakerNotes.length > 0;
+  const notesTitle =
+    deckData.locale === "zh"
+      ? "演讲备注"
+      : deckData.locale === "ja"
+        ? "スピーカーノート"
+        : "Speaker notes";
+  const noNotesText =
+    deckData.locale === "zh"
+      ? "这一页没有备注。"
+      : deckData.locale === "ja"
+        ? "このスライドにはノートがありません。"
+        : "No notes for this slide.";
 
   const handleNext = useCallback(() => {
     if (isNextSlide) {
@@ -101,6 +116,9 @@ export function SlideDeck({ deckData }: SlideDeckProps) {
       if (e.key === "f" || e.key === "F") {
         e.preventDefault();
         toggle();
+      } else if (e.key === "n" || e.key === "N") {
+        e.preventDefault();
+        setShowNotes((value) => (hasNotes ? !value : false));
       } else if ((e.key === "ArrowRight" || e.key === " ") && isNextSlide) {
         e.preventDefault();
         handleNext();
@@ -109,7 +127,7 @@ export function SlideDeck({ deckData }: SlideDeckProps) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [toggle, isNextSlide, handleNext]);
+  }, [toggle, isNextSlide, handleNext, hasNotes]);
 
   return (
     <div
@@ -123,6 +141,7 @@ export function SlideDeck({ deckData }: SlideDeckProps) {
         <SlideProgress
           current={currentIndex}
           total={deckData.slides.length}
+          locale={deckData.locale}
         />
       </div>
 
@@ -135,6 +154,28 @@ export function SlideDeck({ deckData }: SlideDeckProps) {
             </div>
           </div>
         </SlideContent>
+
+        {showNotes && (
+          <aside className="absolute right-4 top-4 z-20 max-h-[calc(100%-2rem)] w-[min(380px,calc(100%-2rem))] overflow-y-auto rounded-lg border border-zinc-200 bg-white/95 p-4 shadow-xl backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/95">
+            <div className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              {notesTitle}
+            </div>
+            {hasNotes ? (
+              <ul className="mt-3 space-y-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">
+                {speakerNotes.map((note, index) => (
+                  <li key={`${currentSlide.id}-note-${index}`} className="flex gap-2">
+                    <span className="font-mono text-xs text-zinc-400">{index + 1}</span>
+                    <span>{note}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+                {noNotesText}
+              </p>
+            )}
+          </aside>
+        )}
       </div>
 
       {/* Navigation Controls */}
@@ -147,20 +188,19 @@ export function SlideDeck({ deckData }: SlideDeckProps) {
         <SlideNavigation
           currentIndex={currentIndex}
           totalSlides={deckData.slides.length}
+          locale={deckData.locale}
           canGoPrevious={canGoPrevious}
           canGoNext={isNextSlide || canGoNext} // Enable next button on next slide
           onPrevious={handlePrevious}
           onNext={handleNext}
           onFirst={goToFirst}
+          onToggleNotes={() => setShowNotes((value) => (hasNotes ? !value : false))}
           onFullscreen={toggle}
           isFullscreen={isFullscreen}
+          showNotes={showNotes}
+          hasNotes={hasNotes}
         />
       </motion.div>
-
-      {/* Keyboard shortcuts hint */}
-      <div className="fixed bottom-20 left-1/2 -translate-x-1/2 text-xs text-zinc-400 dark:text-zinc-600 opacity-0 hover:opacity-100 transition-opacity">
-        Use arrow keys to navigate • F for fullscreen
-      </div>
     </div>
   );
 }

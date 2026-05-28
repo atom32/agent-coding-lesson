@@ -42,6 +42,25 @@ export function Sidebar() {
         >
           {tNav("curriculum")}
         </Link>
+        <div className="space-y-1">
+          {[
+            { key: "summary", href: `/${locale}/summary` },
+            { key: "glossary", href: `/${locale}/glossary` },
+          ].map((item) => (
+            <Link
+              key={item.key}
+              href={item.href}
+              className={cn(
+                "block rounded-md border px-2.5 py-2 text-sm transition-colors",
+                pathname === item.href || pathname === `${item.href}/`
+                  ? "border-zinc-300 bg-zinc-100 font-medium text-zinc-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+                  : "border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300"
+              )}
+            >
+              {tNav(item.key)}
+            </Link>
+          ))}
+        </div>
 
         <section className="space-y-5">
           <div className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">

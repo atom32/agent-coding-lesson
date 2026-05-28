@@ -1,7 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, BookOpen, FlaskConical } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BookMarked,
+  BookOpen,
+  FlaskConical,
+  ListChecks,
+  Tags,
+} from "lucide-react";
 import { useLocale, useTranslations } from "@/lib/i18n";
 import { getVersionMeta } from "@/lib/constants";
 import {
@@ -32,6 +40,52 @@ export default function CurriculumPage() {
           {t("subtitle")}
         </p>
       </header>
+
+      <section className="grid gap-3 md:grid-cols-3">
+        {[
+          {
+            href: `/${locale}/summary`,
+            icon: ListChecks,
+            title: t("summary_entry_title"),
+            desc: t("summary_entry_desc"),
+          },
+          {
+            href: `/${locale}/advanced/00-overview`,
+            icon: BookMarked,
+            title: t("advanced_entry_title"),
+            desc: t("advanced_entry_desc"),
+          },
+          {
+            href: `/${locale}/glossary`,
+            icon: Tags,
+            title: t("glossary_entry_title"),
+            desc: t("glossary_entry_desc"),
+          },
+        ].map((entry) => {
+          const Icon = entry.icon;
+          return (
+            <Link
+              key={entry.href}
+              href={entry.href}
+              className="group rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:bg-zinc-800/60"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2 text-sm font-semibold text-zinc-950 dark:text-zinc-50">
+                  <Icon size={17} />
+                  {entry.title}
+                </div>
+                <ArrowUpRight
+                  size={15}
+                  className="shrink-0 text-zinc-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                {entry.desc}
+              </p>
+            </Link>
+          );
+        })}
+      </section>
 
       <section className="grid gap-4 md:grid-cols-2">
         <div className="rounded-lg border border-blue-200 bg-blue-50 p-5 dark:border-blue-900/70 dark:bg-blue-950/30">
