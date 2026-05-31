@@ -65,7 +65,7 @@ export const VERSION_META_ZH: Record<string, Partial<(typeof VERSION_META)[strin
     title: "技能加载",
     subtitle: "按需加载知识",
     coreAddition: "SkillLoader + 两层注入",
-    keyInsight: "需要时通过 tool_result 注入知识，而不是提前塞进 system prompt",
+    keyInsight: "需要时通过 tool_result 注入知识，避免提前占用 system prompt",
   },
   s06: {
     title: "上下文压缩",

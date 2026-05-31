@@ -50,7 +50,7 @@
       "alternatives": "Relying only on console logs is lighter but fragile during long sessions and hard to audit. A full event bus infrastructure is powerful but heavier than needed for this teaching baseline.",
       "zh": {
         "title": "追加式生命周期事件流",
-        "description": "生命周期事件写入 `.worktrees/events.jsonl`（如 `worktree.create.*`、`worktree.remove.*`、`task.completed`）。这样状态迁移可查询、可追踪，失败也会以 `*.failed` 显式暴露，而不是静默丢失。"
+        "description": "生命周期事件写入 `.worktrees/events.jsonl`（如 `worktree.create.*`、`worktree.remove.*`、`task.completed`）。这样状态迁移可查询、可追踪，失败也会以 `*.failed` 显式暴露，避免静默丢失。"
       },
       "ja": {
         "title": "追記型ライフサイクルイベント",
@@ -64,7 +64,7 @@
       "alternatives": "Keeping closeout fully manual gives flexibility but increases operational drift. Fully automatic removal on every completion risks deleting a workspace before final review.",
       "zh": {
         "title": "任务与工作区一起收尾",
-        "description": "`worktree_remove(..., complete_task=true)` 允许在一个动作里完成收尾：删除隔离目录并把绑定任务标记为 completed。收尾保持为显式工具驱动迁移（`worktree_keep` / `worktree_remove`），而不是隐藏的自动清理。这样可减少状态悬挂（任务已完成但临时工作区仍活跃，或反过来）。"
+        "description": "`worktree_remove(..., complete_task=true)` 允许在一个动作里完成收尾：删除隔离目录并把绑定任务标记为 completed。收尾通过显式工具迁移完成（`worktree_keep` / `worktree_remove`），避免隐藏的自动清理。这样可减少状态悬挂（任务已完成但临时工作区仍活跃，或反过来）。"
       },
       "ja": {
         "title": "タスクとワークスペースを同時にクローズ",
@@ -77,8 +77,8 @@
       "description": "Lifecycle events improve auditability, but the source of truth remains task/worktree state files. Events should be read as transition traces, not as a replacement state machine.",
       "alternatives": "Using logs alone hides structured transitions; using events as the only state source risks drift when replay/repair semantics are undefined.",
       "zh": {
-        "title": "事件流是观测旁路，不是状态机替身",
-        "description": "生命周期事件提升可审计性，但真实状态源仍是任务/工作区状态文件。事件更适合做迁移轨迹，而不是替代主状态机。"
+        "title": "事件流用于观测，不替代状态机",
+        "description": "生命周期事件提升可审计性，但真实状态源仍是任务/工作区状态文件。事件更适合记录迁移轨迹，主状态机仍负责表达当前状态。"
       },
       "ja": {
         "title": "イベントは観測サイドチャネルであり状態機械の代替ではない",

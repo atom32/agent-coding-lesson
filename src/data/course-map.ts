@@ -329,7 +329,7 @@ export const COURSE_BRIDGE_ZH: Record<string, LocalizedCourseBridgeText> = {
     productionQuestion: "42+ 个工具如何保持安全、可搜索、缓存稳定并能渲染 UI？",
     bridge: "dispatch map 在真实系统里会长成完整 Tool 契约：schema 校验、权限检查、并发标志、结果存储和沙箱执行。",
     practice: "把 s02 的一个 handler 改成带 schema、只读状态和执行前校验的小对象。",
-    pattern: "工具不是函数，而是一份契约。",
+    pattern: "工具应按契约来设计。",
   },
   s03: {
     labQuestion: "Harness 如何帮助模型在多步骤任务里保持意图？",
@@ -341,7 +341,7 @@ export const COURSE_BRIDGE_ZH: Record<string, LocalizedCourseBridgeText> = {
   s04: {
     labQuestion: "子 Agent 如何把嘈杂工作隔离出主上下文？",
     productionQuestion: "真实 worker 如何生成、隔离、监督和汇总？",
-    bridge: "玩具子 Agent 使用独立 messages。生产 worker 还需要后端、身份、任务记录、权限委托和完成通知。",
+    bridge: "教学版子 Agent 使用独立 messages。生产 worker 还需要后端、身份、任务记录、权限委托和完成通知。",
     practice: "把每次子 Agent 请求和最终摘要写入 JSONL，让主 Agent 可以审计委派工作。",
     pattern: "委派 = 上下文隔离 + 生命周期控制。",
   },
@@ -364,7 +364,7 @@ export const COURSE_BRIDGE_ZH: Record<string, LocalizedCourseBridgeText> = {
     productionQuestion: "会话、任务、恢复、分叉和持久状态如何表达？",
     bridge: "任务板是持久控制平面。Claude Code 把这个想法扩展到 JSONL 会话、父链、任务变体和后台通知。",
     practice: "给任务加历史日志，让崩溃后可以重放每次状态变化。",
-    pattern: "长任务需要持久状态，不只是更长上下文。",
+    pattern: "长任务需要持久状态，不能只依赖更长上下文。",
   },
   s08: {
     labQuestion: "慢操作如何不阻塞 Agent 的下一步思考？",
@@ -377,7 +377,7 @@ export const COURSE_BRIDGE_ZH: Record<string, LocalizedCourseBridgeText> = {
     labQuestion: "多个 Agent 只靠文件如何协作？",
     productionQuestion: "真实 Swarm 为什么仍然可以选择文件邮箱和锁？",
     bridge: "JSONL inbox 会长成带锁的崩溃安全邮箱、团队配置、后端检测、领导-工人规则和权限委托。",
-    practice: "给玩具邮箱增加 message id 和带锁的 append/read 操作。",
+    practice: "给教学版邮箱增加 message id 和带锁的 append/read 操作。",
     pattern: "当 Agent 是独立进程时，简单持久化可能比复杂 IPC 更可靠。",
   },
   s10: {

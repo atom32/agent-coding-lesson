@@ -70,6 +70,19 @@ src/
 - `/en/advanced/01-query-engine`: advanced production chapter pages
 - `/en/slides/s01`: slide deck view for each session
 
+## Teaching Materials
+
+The `docs/course/` folder contains classroom-ready material for the first practical lesson:
+
+- `s01-react-loop-teaching-plan.md`: teacher script for a 60-120 minute ReAct / agentic loop class.
+- `s01-react-loop-lab.md`: student lab sheet with coding tasks and assessment checkpoints.
+- `s02-tool-calling-teaching-plan.md`: teacher script for tool calling, dispatch maps, and tool contracts.
+- `s02-tool-calling-lab.md`: student lab sheet for designing and wiring a new tool.
+- `s03-todowrite-planning-teaching-plan.md`: teacher script for visible planning state and TodoWrite.
+- `s03-todowrite-planning-lab.md`: student lab sheet for extending todo state and reminder injection.
+- `s04-subagent-context-isolation-teaching-plan.md`: teacher script for subagents, context isolation, and delegation boundaries.
+- `s04-subagent-context-isolation-lab.md`: student lab sheet for task types, tool filtering, and structured subagent summaries.
+
 ## Notes
 
 This repository is intended to be standalone. It does not require sibling checkouts of `learn-claude-code` or `claude-reviews-claude` because the required course resources are included under `resources/`.

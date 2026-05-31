@@ -473,7 +473,7 @@ function buildSpeakerNotes(
           : `把问题落回本节心智模型：${mentalModel}`,
       ],
       solution: [
-        `讲清楚解决方案不是“更聪明的 prompt”，而是把责任放进 harness：${context.meta.coreAddition}`,
+        `讲清楚本节方案的重点在于 harness 责任划分：${context.meta.coreAddition}`,
         `可以点名本页原则里最重要的一条：${context.principles?.[0] || context.meta.keyInsight}`,
       ],
       code: [
@@ -490,7 +490,7 @@ function buildSpeakerNotes(
       ],
       summary: [
         `收束到本节 checkpoint：${checkpoint}`,
-        `把本节机制和下一层生产复杂度连接起来，避免停留在玩具实现的满足感里。`,
+        `把本节机制和下一层生产复杂度连接起来，避免只停留在教学实现层面。`,
       ],
       next: [
         `把下一节说成自然延伸：本节解决了 ${context.title || context.meta.title}，下一节进入 ${context.nextTitle || context.meta.title}。`,

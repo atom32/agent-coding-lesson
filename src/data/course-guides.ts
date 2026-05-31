@@ -62,7 +62,7 @@ export const COURSE_SUMMARIES: CourseSummary[] = [
     version: "s02",
     focus: {
       en: "Make capabilities extensible without changing the loop.",
-      zh: "让新能力可扩展，而不是每加一个工具就重写循环。",
+      zh: "让新能力以可扩展方式接入，避免每增加一个工具就改写循环。",
     },
     mentalModel: {
       en: "A tool is a contract between model intent and real-world execution.",
@@ -90,7 +90,7 @@ export const COURSE_SUMMARIES: CourseSummary[] = [
     },
     mentalModel: {
       en: "Planning should be mutable state, not a private thought that disappears between turns.",
-      zh: "计划应该是可更新的状态，而不是一段会在轮次之间消失的私有想法。",
+      zh: "计划应该成为可更新、可检查的状态，能够在多个轮次之间持续存在。",
     },
     labMechanism: {
       en: "TodoWrite stores tasks and injects reminders when the conversation drifts.",
@@ -254,7 +254,7 @@ export const COURSE_SUMMARIES: CourseSummary[] = [
     version: "s10",
     focus: {
       en: "Make team negotiation structured instead of ad hoc.",
-      zh: "把团队协商做成结构化协议，而不是临时话术。",
+      zh: "把团队协商定义为结构化协议，减少临时话术带来的歧义。",
     },
     mentalModel: {
       en: "Every negotiation needs the same envelope: request, correlation id, response, timeout.",
@@ -521,7 +521,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     },
     whyItMatters: {
       en: "It makes tool ecosystems portable across clients instead of hard-wired into one app.",
-      zh: "它让工具生态可以跨客户端复用，而不是硬编码在某个应用里。",
+      zh: "它让工具生态可以跨客户端复用，避免绑定在单一应用实现中。",
     },
     sessions: ["s05"],
   },

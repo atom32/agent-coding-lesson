@@ -22,7 +22,7 @@
       "alternatives": "A percentage-based threshold (compress when context is 80% full) adapts to different context window sizes but doesn't account for the fixed cost of generating a summary. A fixed threshold of 10K would compress more aggressively but often isn't worth it. The 20K value was chosen empirically: it's the point where compression savings consistently outweigh the quality loss from summarization.",
       "zh": {
         "title": "最小节省量 = 20,000 Token 才触发压缩",
-        "description": "自动压缩仅在估算节省量（当前 token 数减去预估摘要大小）超过 20,000 token 时才触发。压缩不是免费的：摘要本身会消耗 token，还有生成摘要的 API 调用成本。如果对话只有 25,000 token，压缩可能节省 5,000 token，但需要一次 API 调用，且产出的摘要可能不如原文连贯。20K 的阈值确保只在节省量明显超过开销时才进行压缩。"
+        "description": "自动压缩仅在估算节省量（当前 token 数减去预估摘要大小）超过 20,000 token 时才触发。压缩本身也有成本：摘要会消耗 token，生成摘要还需要一次 API 调用。如果对话只有 25,000 token，压缩可能节省 5,000 token，但需要一次 API 调用，且产出的摘要可能不如原文连贯。20K 的阈值确保只在节省量明显超过开销时才进行压缩。"
       },
       "ja": {
         "title": "圧縮前に MIN_SAVINGS = 20,000 トークンが必要",

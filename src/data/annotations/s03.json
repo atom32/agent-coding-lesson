@@ -8,7 +8,7 @@
       "alternatives": "The model could plan internally via chain-of-thought reasoning (as it does in v0/v1). Internal planning works but is invisible and ephemeral -- once the thinking scrolls out of context, the plan is lost. Claude's extended thinking is another option, but it's not inspectable by the user or by downstream tools.",
       "zh": {
         "title": "通过 TodoWrite 让计划可见",
-        "description": "我们不让模型在思维链中默默规划，而是强制通过 TodoWrite 工具将计划外化。每个计划项都有可追踪的状态（pending、in_progress、completed）。这有三个好处：(1) 用户可以在执行前看到 agent 打算做什么；(2) 开发者可以通过检查计划状态来调试 agent 行为；(3) agent 自身可以在后续轮次中引用计划，即使早期上下文已经滚出窗口。"
+        "description": "这里通过 TodoWrite 工具将计划外化，避免计划只停留在不可见的推理过程中。每个计划项都有可追踪的状态（pending、in_progress、completed）。这有三个好处：(1) 用户可以在执行前看到 agent 打算做什么；(2) 开发者可以通过检查计划状态来调试 agent 行为；(3) agent 自身可以在后续轮次中引用计划，即使早期上下文已经滚出窗口。"
       },
       "ja": {
         "title": "TodoWrite による計画の可視化",
