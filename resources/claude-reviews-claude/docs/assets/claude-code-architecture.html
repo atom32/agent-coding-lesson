@@ -170,23 +170,23 @@
     <div style="position:absolute; top:20px; right:40px; color:#94a3b8; font-size:9px; letter-spacing:0.5px; text-transform:uppercase; font-weight:600">Single Query Loop Iteration</div>
     <div style="position:absolute; top:52px; left:40px; right:40px; display:flex">
       <div class="spectrum-seg" style="flex:1">
-        <div><a href="../chapters/10-context-assembly" class="ep-link">System Prompt Assembly<span class="ep-badge">EP10</span></a></div>
+        <div><a href="#EP10" class="ep-link" data-chapter="10-context-assembly">System Prompt Assembly<span class="ep-badge">EP10</span></a></div>
         <div class="spectrum-label">Cache Boundary · Dynamic Context</div>
       </div>
       <div class="spectrum-seg" style="flex:1">
-        <div><a href="../chapters/11-compact-system" class="ep-link">Context Governance<span class="ep-badge">EP11</span></a></div>
+        <div><a href="#EP11" class="ep-link" data-chapter="11-compact-system">Context Governance<span class="ep-badge">EP11</span></a></div>
         <div class="spectrum-label">5-Layer Compaction · Budget Control</div>
       </div>
       <div class="spectrum-seg" style="flex:1">
-        <div><a href="../chapters/15-services-api-layer" class="ep-link">Claude API Streaming<span class="ep-badge">EP15</span></a></div>
+        <div><a href="#EP15" class="ep-link" data-chapter="15-services-api-layer">Claude API Streaming<span class="ep-badge">EP15</span></a></div>
         <div class="spectrum-label">Streaming · Extended Thinking</div>
       </div>
       <div class="spectrum-seg" style="flex:1.1">
-        <div><a href="../chapters/02-tool-system" class="ep-link">Tool Dispatch &amp; Execution<span class="ep-badge">EP02</span></a></div>
+        <div><a href="#EP02" class="ep-link" data-chapter="02-tool-system">Tool Dispatch &amp; Execution<span class="ep-badge">EP02</span></a></div>
         <div class="spectrum-label">Concurrency Groups · Permissions · Hooks</div>
       </div>
       <div class="spectrum-seg" style="flex:0.9">
-        <div><a href="../chapters/01-query-engine" class="ep-link">Loop Control<span class="ep-badge">EP01</span></a></div>
+        <div><a href="#EP01" class="ep-link" data-chapter="01-query-engine">Loop Control<span class="ep-badge">EP01</span></a></div>
         <div class="spectrum-label">Continue · Terminate · Recover</div>
       </div>
     </div>
@@ -257,16 +257,16 @@
 
     <!-- ===== Row 1: Entry Points (Source Boxes) ===== -->
     <div class="box source" style="left:50px; top:171px; width:145px; height:48px">
-      <a href="../chapters/14-ui-state-management" class="ep-link">Interactive REPL<span class="ep-badge">EP14</span></a><span class="tech">React/Ink · Declarative Terminal UI</span>
+      <a href="#EP14" class="ep-link" data-chapter="14-ui-state-management">Interactive REPL<span class="ep-badge">EP14</span></a><span class="tech">React/Ink · Declarative Terminal UI</span>
     </div>
     <div class="box source" style="left:50px; top:231px; width:145px; height:48px">
       Headless / SDK<span class="tech">--print · stream-json</span>
     </div>
     <div class="box source" style="left:50px; top:291px; width:145px; height:48px">
-      <a href="../chapters/13-bridge-system" class="ep-link">Remote / CCR<span class="ep-badge">EP13</span></a><span class="tech">WebSocket · Remote Sessions</span>
+      <a href="#EP13" class="ep-link" data-chapter="13-bridge-system">Remote / CCR<span class="ep-badge">EP13</span></a><span class="tech">WebSocket · Remote Sessions</span>
     </div>
     <div class="box source" style="left:50px; top:351px; width:145px; height:48px">
-      <a href="../chapters/13-bridge-system" class="ep-link">Bridge Worker Node<span class="ep-badge">EP13</span></a><span class="tech">Remote Control · Polling</span>
+      <a href="#EP13" class="ep-link" data-chapter="13-bridge-system">Bridge Worker Node<span class="ep-badge">EP13</span></a><span class="tech">Remote Control · Polling</span>
     </div>
     <div class="box source" style="left:50px; top:411px; width:145px; height:48px">
       Server Mode<span class="tech">HTTP API · SDK Embedding</span>
@@ -281,19 +281,19 @@
       <span class="tag red">Query Loop · Conversation Core</span>
     </div>
     <div class="box" style="left:248px; top:168px; width:266px; height:44px; border-color:#fb7185">
-      <a href="../chapters/01-query-engine" class="ep-link">QueryEngine.ts<span class="ep-badge">EP01</span></a><span class="sub">Session object · Message array · File cache · Usage tracking</span>
+      <a href="#EP01" class="ep-link" data-chapter="01-query-engine">QueryEngine.ts<span class="ep-badge">EP01</span></a><span class="sub">Session object · Message array · File cache · Usage tracking</span>
     </div>
     <div class="box loop-accent" style="left:248px; top:220px; width:266px; height:48px">
-      <a href="../chapters/01-query-engine" class="ep-link">query.ts Main Loop<span class="ep-badge">EP01</span></a><span class="metric">API streaming → tool_use detection → tool_result feedback</span>
+      <a href="#EP01" class="ep-link" data-chapter="01-query-engine">query.ts Main Loop<span class="ep-badge">EP01</span></a><span class="metric">API streaming → tool_use detection → tool_result feedback</span>
     </div>
     <div class="box dashed" style="left:248px; top:276px; width:266px; height:42px">
-      <a href="../chapters/10-context-assembly" class="ep-link">System Prompt Assembly<span class="ep-badge">EP10</span></a><span class="sub">Static prefix + DYNAMIC_BOUNDARY + Dynamic context</span>
+      <a href="#EP10" class="ep-link" data-chapter="10-context-assembly">System Prompt Assembly<span class="ep-badge">EP10</span></a><span class="sub">Static prefix + DYNAMIC_BOUNDARY + Dynamic context</span>
     </div>
     <div class="box dashed" style="left:248px; top:326px; width:266px; height:42px">
-      <a href="../chapters/15-services-api-layer" class="ep-link">services/api/claude.ts<span class="ep-badge">EP15</span></a><span class="sub">Request assembly · beta header · tool schema · prompt cache</span>
+      <a href="#EP15" class="ep-link" data-chapter="15-services-api-layer">services/api/claude.ts<span class="ep-badge">EP15</span></a><span class="sub">Request assembly · beta header · tool schema · prompt cache</span>
     </div>
     <div class="box dashed" style="left:248px; top:376px; width:266px; height:38px">
-      <a href="../chapters/01-query-engine" class="ep-link">Loop Control<span class="ep-badge">EP01</span></a><span class="sub">max-output recovery · auto-compact · stop hook</span>
+      <a href="#EP01" class="ep-link" data-chapter="01-query-engine">Loop Control<span class="ep-badge">EP01</span></a><span class="sub">max-output recovery · auto-compact · stop hook</span>
     </div>
 
     <!-- ===== Tool Runtime Group ===== -->
@@ -301,33 +301,33 @@
       <span class="tag green">Tool Runtime · 40+ Tools</span>
     </div>
     <div class="box" style="left:584px; top:168px; width:210px; height:44px; border-color:#34d399">
-      <a href="../chapters/02-tool-system" class="ep-link">tools.ts Registry<span class="ep-badge">EP02</span></a><span class="sub">feature gate · stable ordering · prompt cache friendly</span>
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">tools.ts Registry<span class="ep-badge">EP02</span></a><span class="sub">feature gate · stable ordering · prompt cache friendly</span>
     </div>
     <div class="box dashed" style="left:584px; top:220px; width:210px; height:48px">
-      <a href="../chapters/02-tool-system" class="ep-link">toolOrchestration.ts<span class="ep-badge">EP02</span></a><span class="sub">Concurrency-safe grouping · read/write parallel split</span>
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">toolOrchestration.ts<span class="ep-badge">EP02</span></a><span class="sub">Concurrency-safe grouping · read/write parallel split</span>
     </div>
     <div class="box dashed" style="left:584px; top:276px; width:210px; height:42px">
-      <a href="../chapters/02-tool-system" class="ep-link">toolExecution.ts<span class="ep-badge">EP02</span></a><span class="sub">schema validation · <a href="../chapters/05-hook-system" class="ep-link">hook<span class="ep-badge">EP05</span></a> · permissions · telemetry · OTel</span>
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">toolExecution.ts<span class="ep-badge">EP02</span></a><span class="sub">schema validation · <a href="#EP05" class="ep-link" data-chapter="05-hook-system">hook<span class="ep-badge">EP05</span></a> · permissions · telemetry · OTel</span>
     </div>
     <div class="box dashed" style="left:584px; top:326px; width:210px; height:42px">
-      <a href="../chapters/02-tool-system" class="ep-link">Tool.ts Unified Protocol<span class="ep-badge">EP02</span></a><span class="sub">call + checkPermissions + render + isReadOnly</span>
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">Tool.ts Unified Protocol<span class="ep-badge">EP02</span></a><span class="sub">call + checkPermissions + render + isReadOnly</span>
     </div>
     <div class="box dashed" style="left:584px; top:376px; width:210px; height:38px">
-      <a href="../chapters/02-tool-system" class="ep-link">StreamingToolExecutor<span class="ep-badge">EP02</span></a><span class="sub">Concurrent execution while streaming · Progress rendering</span>
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">StreamingToolExecutor<span class="ep-badge">EP02</span></a><span class="sub">Concurrent execution while streaming · Progress rendering</span>
     </div>
 
     <!-- ===== External Services (Source Boxes) ===== -->
     <div class="box source" style="left:848px; top:171px; width:175px; height:48px">
-      <a href="../chapters/15-services-api-layer" class="ep-link">Anthropic Claude API<span class="ep-badge">EP15</span></a><span class="tech">Opus · Sonnet · Haiku · Streaming</span>
+      <a href="#EP15" class="ep-link" data-chapter="15-services-api-layer">Anthropic Claude API<span class="ep-badge">EP15</span></a><span class="tech">Opus · Sonnet · Haiku · Streaming</span>
     </div>
     <div class="box source" style="left:848px; top:231px; width:175px; height:48px">
-      <a href="../chapters/04-plugin-system" class="ep-link">MCP Server Processes<span class="ep-badge">EP04</span></a><span class="tech">stdio · SSE · HTTP · WS</span>
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">MCP Server Processes<span class="ep-badge">EP04</span></a><span class="tech">stdio · SSE · HTTP · WS</span>
     </div>
     <div class="box source" style="left:848px; top:291px; width:175px; height:48px">
       Local File System<span class="tech">Read · Edit · Write · Glob</span>
     </div>
     <div class="box source" style="left:848px; top:351px; width:175px; height:48px">
-      <a href="../chapters/06-bash-engine" class="ep-link">Shell / Subprocess<span class="ep-badge">EP06</span></a><span class="tech">Bash · PowerShell · sandbox</span>
+      <a href="#EP06" class="ep-link" data-chapter="06-bash-engine">Shell / Subprocess<span class="ep-badge">EP06</span></a><span class="tech">Bash · PowerShell · sandbox</span>
     </div>
 
     <!-- ===== Row 2: Permission System ===== -->
@@ -335,16 +335,16 @@
       <span class="tag orange">4-Way Permission Race</span>
     </div>
     <div class="box" style="left:66px; top:536px; width:188px; height:34px; font-size:11.5px; border-color:#f59e0b">
-      <a href="../chapters/07-permission-pipeline" class="ep-link">PermissionMode<span class="ep-badge">EP07</span></a><span class="sub">default · plan · auto · bypass · bubble</span>
+      <a href="#EP07" class="ep-link" data-chapter="07-permission-pipeline">PermissionMode<span class="ep-badge">EP07</span></a><span class="sub">default · plan · auto · bypass · bubble</span>
     </div>
     <div class="box dashed" style="left:66px; top:575px; width:188px; height:34px; font-size:11.5px">
-      <a href="../chapters/07-permission-pipeline" class="ep-link">4-Way Race Resolution<span class="ep-badge">EP07</span></a><span class="sub">User · Hook · Classifier · Bridge</span>
+      <a href="#EP07" class="ep-link" data-chapter="07-permission-pipeline">4-Way Race Resolution<span class="ep-badge">EP07</span></a><span class="sub">User · Hook · Classifier · Bridge</span>
     </div>
     <div class="box dashed" style="left:66px; top:614px; width:188px; height:34px; font-size:11.5px">
-      <a href="../chapters/06-bash-engine" class="ep-link">Bash Classifier<span class="ep-badge">EP06</span></a><span class="sub">LLM auto-judges command safety</span>
+      <a href="#EP06" class="ep-link" data-chapter="06-bash-engine">Bash Classifier<span class="ep-badge">EP06</span></a><span class="sub">LLM auto-judges command safety</span>
     </div>
     <div class="box dashed" style="left:66px; top:653px; width:188px; height:34px; font-size:11.5px">
-      <a href="../chapters/07-permission-pipeline" class="ep-link">Rule Engine<span class="ep-badge">EP07</span></a><span class="sub">allow/deny/ask · glob · denial tracking</span>
+      <a href="#EP07" class="ep-link" data-chapter="07-permission-pipeline">Rule Engine<span class="ep-badge">EP07</span></a><span class="sub">allow/deny/ask · glob · denial tracking</span>
     </div>
     <div class="box dashed" style="left:66px; top:692px; width:188px; height:24px; font-size:10px">
       ResolveOnce atomic race · first claim wins
@@ -352,25 +352,25 @@
 
     <!-- ===== Row 2: Context Compaction ===== -->
     <div class="group" style="left:306px; top:510px; width:248px; height:210px">
-      <a href="../chapters/11-compact-system" class="ep-link"><span class="tag teal">5-Layer Context Compaction<span class="ep-badge">EP11</span></span></a>
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system"><span class="tag teal">5-Layer Context Compaction<span class="ep-badge">EP11</span></span></a>
     </div>
     <div class="box" style="left:322px; top:536px; width:216px; height:34px; font-size:11.5px; border-color:#14b8a6">
-      <a href="../chapters/11-compact-system" class="ep-link">① snip compact<span class="ep-badge">EP11</span></a><span class="sub">Old tool_result → [snipped] preserves structure</span>
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">① snip compact<span class="ep-badge">EP11</span></a><span class="sub">Old tool_result → [snipped] preserves structure</span>
     </div>
     <div class="box dashed" style="left:322px; top:576px; width:216px; height:34px; font-size:11.5px">
-      <a href="../chapters/11-compact-system" class="ep-link">② microcompact<span class="ep-badge">EP11</span></a><span class="sub">Strip old tool results · Notify cache detector</span>
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">② microcompact<span class="ep-badge">EP11</span></a><span class="sub">Strip old tool results · Notify cache detector</span>
     </div>
     <div class="box dashed" style="left:322px; top:616px; width:216px; height:34px; font-size:11.5px">
-      <a href="../chapters/11-compact-system" class="ep-link">③ context collapse<span class="ep-badge">EP11</span></a><span class="sub">Collapse completed sub-conversations</span>
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">③ context collapse<span class="ep-badge">EP11</span></a><span class="sub">Collapse completed sub-conversations</span>
     </div>
     <div class="box dashed" style="left:322px; top:656px; width:104px; height:34px; font-size:10.5px">
-      <a href="../chapters/11-compact-system" class="ep-link">④ autoCompact<span class="ep-badge">EP11</span></a><span class="sub">Threshold summary</span>
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">④ autoCompact<span class="ep-badge">EP11</span></a><span class="sub">Threshold summary</span>
     </div>
     <div class="box dashed" style="left:434px; top:656px; width:104px; height:34px; font-size:10.5px">
-      <a href="../chapters/11-compact-system" class="ep-link">⑤ reactive<span class="ep-badge">EP11</span></a><span class="sub">PTL error trigger</span>
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">⑤ reactive<span class="ep-badge">EP11</span></a><span class="sub">PTL error trigger</span>
     </div>
     <div class="box dashed" style="left:322px; top:694px; width:216px; height:24px; font-size:10px">
-      <a href="../chapters/11-compact-system" class="ep-link">compact boundary<span class="ep-badge">EP11</span></a> · Incremental recovery · tool result budget
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">compact boundary<span class="ep-badge">EP11</span></a> · Incremental recovery · tool result budget
     </div>
 
     <!-- ===== Row 2: Extension System ===== -->
@@ -378,16 +378,16 @@
       <span class="tag blue">Four-Layer Extension System</span>
     </div>
     <div class="box" style="left:606px; top:536px; width:198px; height:38px; font-size:12px; border-color:#3b82f6">
-      <a href="../chapters/04-plugin-system" class="ep-link">Commands 80+<span class="ep-badge">EP04</span></a><span class="sub">built-in · skills · plugins · MCP prompt</span>
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">Commands 80+<span class="ep-badge">EP04</span></a><span class="sub">built-in · skills · plugins · MCP prompt</span>
     </div>
     <div class="box dashed" style="left:606px; top:580px; width:198px; height:38px; font-size:12px">
-      <a href="../chapters/04-plugin-system" class="ep-link">Skills<span class="ep-badge">EP04</span></a><span class="sub">Markdown prompt · Dynamic discovery · Conditional activation</span>
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">Skills<span class="ep-badge">EP04</span></a><span class="sub">Markdown prompt · Dynamic discovery · Conditional activation</span>
     </div>
     <div class="box dashed" style="left:606px; top:624px; width:198px; height:38px; font-size:12px">
-      <a href="../chapters/04-plugin-system" class="ep-link">Plugins<span class="ep-badge">EP04</span></a><span class="sub">Capability bundle: cmd/skill/hook/MCP/agent</span>
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">Plugins<span class="ep-badge">EP04</span></a><span class="sub">Capability bundle: cmd/skill/hook/MCP/agent</span>
     </div>
     <div class="box dashed" style="left:606px; top:668px; width:198px; height:38px; font-size:12px">
-      <a href="../chapters/04-plugin-system" class="ep-link">MCP Client<span class="ep-badge">EP04</span></a><span class="sub">stdio/SSE/HTTP/WS/claudeai-proxy</span>
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">MCP Client<span class="ep-badge">EP04</span></a><span class="sub">stdio/SSE/HTTP/WS/claudeai-proxy</span>
     </div>
     <div class="note" style="left:606px; top:712px; width:198px; text-align:center; color:#3b82f6">
       External capabilities unified as tool/resource/command/skill
@@ -398,16 +398,16 @@
       <span class="tag violet">Agent / Task Subsystem</span>
     </div>
     <div class="box" style="left:872px; top:536px; width:188px; height:40px; font-size:12px; border-color:#8b5cf6">
-      <a href="../chapters/08-agent-swarms" class="ep-link">AgentTool<span class="ep-badge">EP08</span></a><span class="sub">Subagent · Independent tool pool/model/workdir</span>
+      <a href="#EP08" class="ep-link" data-chapter="08-agent-swarms">AgentTool<span class="ep-badge">EP08</span></a><span class="sub">Subagent · Independent tool pool/model/workdir</span>
     </div>
     <div class="box dashed" style="left:872px; top:582px; width:188px; height:36px; font-size:12px">
-      <a href="../chapters/03-coordinator" class="ep-link">Task Unified Shell<span class="ep-badge">EP03</span></a><span class="sub">local_agent · remote · bash · workflow</span>
+      <a href="#EP03" class="ep-link" data-chapter="03-coordinator">Task Unified Shell<span class="ep-badge">EP03</span></a><span class="sub">local_agent · remote · bash · workflow</span>
     </div>
     <div class="box dashed" style="left:872px; top:624px; width:188px; height:36px; font-size:12px">
-      <a href="../chapters/08-agent-swarms" class="ep-link">SendMessageTool<span class="ep-badge">EP08</span></a><span class="sub">Team context · Broadcast · Plan approval</span>
+      <a href="#EP08" class="ep-link" data-chapter="08-agent-swarms">SendMessageTool<span class="ep-badge">EP08</span></a><span class="sub">Team context · Broadcast · Plan approval</span>
     </div>
     <div class="box dashed" style="left:872px; top:666px; width:188px; height:36px; font-size:12px">
-      <a href="../chapters/03-coordinator" class="ep-link">worktree / remote Isolation<span class="ep-badge">EP03</span></a><span class="sub">Git worktree · Remote execution</span>
+      <a href="#EP03" class="ep-link" data-chapter="03-coordinator">worktree / remote Isolation<span class="ep-badge">EP03</span></a><span class="sub">Git worktree · Remote execution</span>
     </div>
 
     <!-- ===== Row 2: Feature-Flagged ===== -->
@@ -425,7 +425,7 @@
       ULTRAPLAN Remote Planning<span class="sub">CCR 30min · Browser approval · teleport</span>
     </div>
     <div class="box flagged" style="left:1128px; top:668px; width:246px; height:38px; font-size:12px">
-      <a href="../chapters/03-coordinator" class="ep-link">Coordinator<span class="ep-badge">EP03</span></a><span class="sub">Multi-agent parallel · Push notify · scratch</span>
+      <a href="#EP03" class="ep-link" data-chapter="03-coordinator">Coordinator<span class="ep-badge">EP03</span></a><span class="sub">Multi-agent parallel · Push notify · scratch</span>
     </div>
 
     <!-- ===== Row 3: Persistence & State Infrastructure ===== -->
@@ -433,28 +433,28 @@
     <div class="enclosure-label" style="left:65px; top:771px; color:#059669">Persistence &amp; State Layer <span style="color:#94a3b8; margin-left:4px">~/.claude/ · Session lifecycle management</span></div>
 
     <div class="box" style="left:65px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
-      <a href="../chapters/12-startup-bootstrap" class="ep-link">bootstrap/state.ts<span class="ep-badge">EP12</span></a><span class="sub">Process-level global state</span>
+      <a href="#EP12" class="ep-link" data-chapter="12-startup-bootstrap">bootstrap/state.ts<span class="ep-badge">EP12</span></a><span class="sub">Process-level global state</span>
     </div>
     <div class="box" style="left:220px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
-      <a href="../chapters/16-infrastructure-config" class="ep-link">AppStateStore<span class="ep-badge">EP16</span></a><span class="sub">Zustand-style runtime state</span>
+      <a href="#EP16" class="ep-link" data-chapter="16-infrastructure-config">AppStateStore<span class="ep-badge">EP16</span></a><span class="sub">Zustand-style runtime state</span>
     </div>
     <div class="box" style="left:375px; top:792px; width:150px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
-      <a href="../chapters/09-session-persistence" class="ep-link">sessionStorage.ts<span class="ep-badge">EP09</span></a><span class="sub">transcript JSONL · Recovery core</span>
+      <a href="#EP09" class="ep-link" data-chapter="09-session-persistence">sessionStorage.ts<span class="ep-badge">EP09</span></a><span class="sub">transcript JSONL · Recovery core</span>
     </div>
     <div class="box" style="left:540px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
-      <a href="../chapters/09-session-persistence" class="ep-link">history.ts<span class="ep-badge">EP09</span></a><span class="sub">Input history · Project-level</span>
+      <a href="#EP09" class="ep-link" data-chapter="09-session-persistence">history.ts<span class="ep-badge">EP09</span></a><span class="sub">Input history · Project-level</span>
     </div>
     <div class="box" style="left:695px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
-      <a href="../chapters/11-compact-system" class="ep-link">compact boundary<span class="ep-badge">EP11</span></a><span class="sub">Compaction point · Incremental recovery</span>
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">compact boundary<span class="ep-badge">EP11</span></a><span class="sub">Compaction point · Incremental recovery</span>
     </div>
     <div class="box" style="left:850px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
-      <a href="../chapters/16-infrastructure-config" class="ep-link">fileHistory<span class="ep-badge">EP16</span></a><span class="sub">File change snapshots</span>
+      <a href="#EP16" class="ep-link" data-chapter="16-infrastructure-config">fileHistory<span class="ep-badge">EP16</span></a><span class="sub">File change snapshots</span>
     </div>
     <div class="box" style="left:1005px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
-      <a href="../chapters/16-infrastructure-config" class="ep-link">memdir/<span class="ep-badge">EP16</span></a><span class="sub">Memory directory · MEMORY.md</span>
+      <a href="#EP16" class="ep-link" data-chapter="16-infrastructure-config">memdir/<span class="ep-badge">EP16</span></a><span class="sub">Memory directory · MEMORY.md</span>
     </div>
     <div class="box" style="left:1160px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
-      <a href="../chapters/17-telemetry-privacy-operations" class="ep-link">analytics / OTel<span class="ep-badge">EP17</span></a><span class="sub">Datadog · Telemetry</span>
+      <a href="#EP17" class="ep-link" data-chapter="17-telemetry-privacy-operations">analytics / OTel<span class="ep-badge">EP17</span></a><span class="sub">Datadog · Telemetry</span>
     </div>
 
     <!-- ===== Key Design Notes (right side) ===== -->
@@ -507,8 +507,8 @@
         </div>
         <div style="flex:0.9; text-align:center; font-size:9.5px; color:#d97706; border-top:1px solid #fcd34d; padding-top:5px; position:relative">
           <span style="position:absolute; top:-1px; left:0; width:1px; height:5px; background:#fcd34d"></span>
-          <a href="../chapters/07-permission-pipeline" class="ep-link">4-Way Permission Race<span class="ep-badge">EP07</span></a>
-          <div style="font-size:7.5px; color:#f59e0b">User · <a href="../chapters/05-hook-system" class="ep-link">Hook<span class="ep-badge">EP05</span></a> · Classifier · Bridge</div>
+          <a href="#EP07" class="ep-link" data-chapter="07-permission-pipeline">4-Way Permission Race<span class="ep-badge">EP07</span></a>
+          <div style="font-size:7.5px; color:#f59e0b">User · <a href="#EP05" class="ep-link" data-chapter="05-hook-system">Hook<span class="ep-badge">EP05</span></a> · Classifier · Bridge</div>
           <span style="position:absolute; top:-1px; right:0; width:1px; height:5px; background:#fcd34d"></span>
         </div>
         <div style="flex:0.9; text-align:center; font-size:9.5px; color:#64748b; border-top:1px solid #e2e8f0; padding-top:5px; position:relative">
@@ -523,7 +523,7 @@
         </div>
         <div style="flex:0.8; text-align:center; font-size:9.5px; color:#64748b; border-top:1px solid #e2e8f0; padding-top:5px; position:relative">
           <span style="position:absolute; top:-1px; left:0; width:1px; height:5px; background:#e2e8f0"></span>
-          <a href="../chapters/05-hook-system" class="ep-link">Hook Interception<span class="ep-badge">EP05</span></a>
+          <a href="#EP05" class="ep-link" data-chapter="05-hook-system">Hook Interception<span class="ep-badge">EP05</span></a>
           <div style="font-size:7.5px; color:#94a3b8">PreToolUse · PostToolUse</div>
         </div>
         <div style="flex:0.9; text-align:center; font-size:9.5px; color:#d97706; border-top:1px solid #fcd34d; padding-top:5px; position:relative">
@@ -571,6 +571,42 @@
 </div>
 
 <script>
+(function() {
+  'use strict';
+
+  // Detect current locale from URL path
+  function getCurrentLocale() {
+    const path = window.location.pathname;
+    const localeMatch = path.match(/^\/(en|zh|ja)\//);
+    return localeMatch ? localeMatch[1] : 'en'; // Default to English
+  }
+
+  // Update all EP links with correct locale
+  function updateLinks() {
+    const locale = getCurrentLocale();
+    const epLinks = document.querySelectorAll('.ep-link[data-chapter]');
+
+    epLinks.forEach(function(link) {
+      const chapter = link.getAttribute('data-chapter');
+      if (chapter) {
+        link.setAttribute('href', '/' + locale + '/advanced/' + chapter);
+      }
+    });
+  }
+
+  // Initial update
+  updateLinks();
+
+  // Update on SPA navigation (if applicable)
+  let lastPath = window.location.pathname;
+  new MutationObserver(function() {
+    if (window.location.pathname !== lastPath) {
+      lastPath = window.location.pathname;
+      updateLinks();
+    }
+  }).observe(document.documentElement, { childList: true, subtree: true });
+
+  // Resize function
   function resize() {
     const wrapper = document.querySelector('.wrapper');
     const canvas = document.querySelector('.canvas');
@@ -580,6 +616,7 @@
   }
   window.addEventListener('resize', resize);
   resize();
+})();
 </script>
 
 </body>
