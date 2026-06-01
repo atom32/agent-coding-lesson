@@ -71,6 +71,8 @@ Claude Code's power comes not from a single killer feature, but from **six pilla
          └────────────────┘ └──────────────┘ └────────────────┘
 ```
 
+> 💡 **Supplementary reading**: [Detailed Architecture Diagram (Interactive HTML)](../assets/claude-code-architecture.html) — Complete visualization with module boundaries, data flow, tech stack, and security boundaries
+
 **The data flow in one sentence:**
 
 ```
